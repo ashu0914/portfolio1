@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ashirwad Jha Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== BACKGROUND VIDEO ===== */
+#bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* ===== NAV ===== */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:30px;
+padding:15px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#ffd60a;
+}
+
+/* ===== HEADER ===== */
+header{
+text-align:center;
+padding:120px 20px 50px;
+}
+
+.profile-img{
+width:130px;
+height:130px;
+border-radius:50%;
+border:3px solid #ffd60a;
+transition:0.3s;
+}
+
+.profile-img:hover{
+transform:scale(1.1);
+}
+
+header h1{
+font-size:60px;
+font-weight:900;
+}
+
+#typing{
+color:#ff4d6d;
+margin-top:10px;
+font-size:20px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+width:90%;
+max-width:900px;
+margin:auto;
+}
+
+/* ===== CARD ===== */
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:25px;
+margin:20px 0;
+border-radius:15px;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-5px) scale(1.02);
+}
+
+/* ===== GLOW ===== */
+.glow{
+box-shadow:0 0 25px rgba(255,0,110,0.25);
+transition:0.4s;
+}
+
+.glow:hover{
+box-shadow:0 0 50px rgba(255,0,110,0.5);
+}
+
+/* ===== ABOUT TYPING ===== */
+.typing-about{
+color:#ff4d6d;
+font-size:18px;
+margin:8px 0;
+min-height:25px;
+}
+
+/* ===== HEADINGS ===== */
+h2{
+color:#ffd60a;
+margin-bottom:10px;
+}
+
+/* ===== PROJECT GRID ===== */
+.project-grid{
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+width:100%;
+}
+
+.project img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.project{
+background:rgba(255,255,255,0.03);
+padding:10px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.project:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,0,110,0.2);
+}
+
+.project p{
+color:#bbb;
+font-size:13px;
+margin-top:5px;
+}
+
+.project h3{
+margin-top:8px;
+color:#fff;
+}
+
+/* ===== ABOUT TEXT ===== */
+#about p{
+line-height:1.7;
+color:#ddd;
+}
+
+/* ===== BUTTONS ===== */
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 15px #ff006e;
+}
+
+a[href*="instagram"] button{
+background:linear-gradient(45deg,#ff006e,#ff9f1c);
+color:white;
+}
+
+a[href*="linkedin"] button{
+background:#0077b5;
+color:white;
+}
+
+/* ===== ANIMATION ===== */
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:0.8s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:20px;
+opacity:0.6;
+}
+
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:10000;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+box-shadow:0 0 30px rgba(255,255,255,0.2);
+cursor:pointer;
+}
+
+/* small improvement */
+a{
+color:#ffd60a;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video autoplay muted loop id="bg-video">
+<source src="bg.mp4" type="video/mp4">
+</video>
+
+<!-- NAV -->
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<!-- HEADER -->
+<header id="home">
+<img src="profile.jpg" class="profile-img">
+<h1>Ashirwad Jha</h1>
+<div id="typing"></div>
+</header>
+
+<div class="container">
+
+<div class="card hidden glow" id="about">
+
+<h2><i class="fa-solid fa-user"></i> About Me</h2>
+
+<h3 class="typing-about"></h3>
+
+<p>
+I am a final semester Diploma student in Computer Science Engineering with a keen interest in web development and 3D design. I have practical experience in software tools such as 3ds Max and AutoCAD, and I have worked on projects including residential and commercial designs.
+</p>
+
+<p>
+I enjoy turning ideas into real digital experiences through clean and functional design. My focus is on creating user-friendly interfaces and visually appealing layouts that solve real-world problems efficiently.
+</p>
+
+<p>
+I am passionate about continuous learning and improving my skills in modern web technologies. My goal is to grow as a developer and contribute to impactful projects in the field of technology and design.
+</p>
+
+</div>
+
+<div class="card hidden" id="skills">
+
+<h2><i class="fa-solid fa-code"></i> Skills</h2>
+
+<p style="margin-bottom:15px; color:#aaa;">
+These are the technologies and tools I currently work with and continuously improve.
+</p>
+
+<!-- BADGES -->
+<div style="margin-bottom:20px;">
+<span style="display:inline-block;padding:6px 12px;margin:5px;border-radius:8px;background:#ff006e33;">HTML</span>
+<span style="display:inline-block;padding:6px 12px;margin:5px;border-radius:8px;background:#0077b533;">CSS</span>
+<span style="display:inline-block;padding:6px 12px;margin:5px;border-radius:8px;background:#ffd60a33;">JavaScript</span>
+<span style="display:inline-block;padding:6px 12px;margin:5px;border-radius:8px;background:#00ffb333;">3ds Max</span>
+<span style="display:inline-block;padding:6px 12px;margin:5px;border-radius:8px;background:#ff9f1c33;">AutoCAD</span>
+</div>
+
+<!-- PROGRESS BARS -->
+<div style="margin-top:10px;">
+
+<p>HTML</p>
+<div style="background:#222;border-radius:10px;height:10px;">
+<div style="width:90%;height:10px;background:#ff006e;border-radius:10px;"></div>
+</div>
+
+<br>
+
+<p>CSS</p>
+<div style="background:#222;border-radius:10px;height:10px;">
+<div style="width:85%;height:10px;background:#0077b5;border-radius:10px;"></div>
+</div>
+
+<br>
+
+<p>JavaScript</p>
+<div style="background:#222;border-radius:10px;height:10px;">
+<div style="width:70%;height:10px;background:#ffd60a;border-radius:10px;"></div>
+</div>
+
+<br>
+
+<p>3ds Max</p>
+<div style="background:#222;border-radius:10px;height:10px;">
+<div style="width:80%;height:10px;background:#00ffb3;border-radius:10px;"></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="card hidden" id="projects">
+
+<h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
+
+<p style="color:#aaa;margin-bottom:15px;">
+Here are some of my design and development projects showcasing my skills in 3D visualization and creativity.
+</p>
+
+<div class="project-grid">
+
+<div class="card hidden" id="projects">
+
+<h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
+
+<p style="color:#aaa;margin-bottom:15px;">
+A mix of my 3D design and web development projects as a Computer Science student.
+</p>
+
+<div class="project-grid">
+
+<!-- PROJECTS -->
+<div class="card hidden" id="projects">
+
+<h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
+
+<p style="color:#aaa;margin-bottom:15px;">
+A mix of my 3D design and web development projects as a Computer Science student.
+</p>
+
+<div class="project-grid">
+
+<!-- 3D PROJECT -->
+<div class="project">
+<img src="project1.jpg" onclick="openLightbox(this)">
+<h3>3BHK Interior Design</h3>
+<p>3ds Max architectural visualization project.</p>
+</div>
+
+<!-- 3D PROJECT -->
+<div class="project">
+<img src="project2.jpg" onclick="openLightbox(this)">
+<h3>Restaurant Design</h3>
+<p>Modern commercial interior layout.</p>
+</div>
+
+<!-- TECH PROJECT -->
+<div class="project">
+<img src="web1.jpg" onclick="openLightbox(this)">
+<h3>Portfolio Website</h3>
+<p>Responsive personal portfolio using HTML, CSS, JS.</p>
+</div>
+
+<!-- TECH PROJECT -->
+<div class="project">
+<img src="web2.jpg" onclick="openLightbox(this)">
+<h3>Landing Page UI</h3>
+<p>Modern UI landing page design with animations.</p>
+</div>
+
+</div>
+</div>
+
+<!-- CONTACT -->
+<div class="card hidden" id="contact">
+<h2><i class="fa-solid fa-envelope"></i> Contact</h2>
+
+<a href="mailto:ashujha0914@outlook.com?subject=Hello Ashirwad&body=Hi Ashirwad, I visited your portfolio..." target="_blank">
+<button><i class="fa-solid fa-paper-plane"></i> ashujha0914@outlook.com</button>
+</a>
+
+<br>
+
+<a href="https://www.instagram.com/ashuu_yr?igsh=eTZvNXlicmpkOHVy" target="_blank">
+<button><i class="fa-brands fa-instagram"></i> Instagram</button>
+</a>
+
+<br><br>
+
+<a href="https://www.linkedin.com/in/ashirwad-jha-65152b403?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
+<button><i class="fa-brands fa-linkedin"></i> LinkedIn</button>
+</a>
+
+<br><br>
+
+<button onclick="showMsg()">Say Hello</button>
+
+</div>
+
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+<img id="lightbox-img">
+</div>
+
+<footer>
+<p>© 2026 Ashirwad Jha</p>
+</footer>
+
+<script>
+
+/* MAIN TYPING */
+const text=["Diploma CSE Student","3D Designer","Web Developer"];
+let i=0,j=0,del=false;
+
+function type(){
+let cur=text[i];
+
+j=del?j-1:j+1;
+
+document.getElementById("typing").innerHTML=cur.substring(0,j);
+
+if(!del && j===cur.length){
+del=true;
+setTimeout(type,1000);return;
+}
+
+if(del && j===0){
+del=false;
+i=(i+1)%text.length;
+}
+
+setTimeout(type,del?50:100);
+}
+type();
+
+/* ABOUT TYPING */
+const aboutText=["Web Developer 🚀","3D Designer 🎨","Problem Solver 💡"];
+let a=0,b=0,del2=false;
+
+function typeAbout(){
+let cur=aboutText[a];
+
+b=del2?b-1:b+1;
+
+document.querySelector(".typing-about").innerHTML=cur.substring(0,b);
+
+if(!del2 && b===cur.length){
+del2=true;
+setTimeout(typeAbout,1000);
+return;
+}
+
+if(del2 && b===0){
+del2=false;
+a=(a+1)%aboutText.length;
+}
+
+setTimeout(typeAbout,del2?80:120);
+}
+typeAbout();
+
+/* SCROLL */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+observer.observe(el);
+});
+
+/* BUTTON */
+function showMsg(){
+alert("Thanks for visiting my portfolio 🚀");
+}
+
+function openLightbox(img){
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=img.src;
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
